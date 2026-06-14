@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from backend.matcher import match_skills
+from matcher import match_skills
 
 app = FastAPI()
 
