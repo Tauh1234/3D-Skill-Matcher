@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from matcher import match_skills
+from matcher import match_skills   # ✅ ध्यान दो: backend.matcher नहीं, सिर्फ matcher
 
 app = FastAPI()
 
@@ -9,6 +9,10 @@ class ResumeData(BaseModel):
     job_role: str
     required_skills: str
     user_skills: str
+
+@app.get("/")   # ✅ Root endpoint ताकि Render पर test हो सके
+def read_root():
+    return {"message": "Backend running successfully"}
 
 @app.post("/match")
 def match_resume(data: ResumeData):
